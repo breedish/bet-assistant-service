@@ -3,7 +3,7 @@
 
 ## REST Resource overview
 
-1. *GET* _/competitions/v1_ - returns list of registered competitions
+####1. *GET* _/competitions/v1_ - returns list of registered competitions
 Sample request:
 ```
 GET http://localhost:8080/bet/competitions/v1 
@@ -12,7 +12,7 @@ Sample response:
 ```json
 ["NBA"]
 ```
-2. *GET* _/competitions/v1/{competition}/teams_ - returns list of registered teams for given competition
+####2. *GET* _/competitions/v1/{competition}/teams_ - returns list of registered teams for given competition
 Sample request:
 ```
 GET http://localhost:8080/bet/competitions/v1/nba/teams 
@@ -32,7 +32,7 @@ Sample response:
     }
 ]
 ```
-3. *GET* _/competitions/v1/{competition}/matches/summary/_ - returns stats of latest matches for team of given competition
+####3. *GET* _/competitions/v1/{competition}/matches/summary/_ - returns stats for latest matches of teams for given competition
 Sample request:
  ```
  GET http://localhost:8080/bet/competitions/v1/nba/matches/summary/ 
