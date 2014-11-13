@@ -10,4 +10,6 @@ public interface MatchesResolver {
 
     MatchesSummaryResult resolve(Competition competition);
 
+    Competition getType();
+
 }

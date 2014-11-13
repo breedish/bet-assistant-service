@@ -5,10 +5,12 @@ import com.betassistant.domain.Team;
 import com.betassistant.resource.response.MatchesSummaryResult;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -22,9 +24,14 @@ public class CompetitionService {
     private final static Map<Competition, Set<Team>> teamByCompetition = Arrays.stream(Competition.values())
         .collect(Collectors.toMap(p -> p, Competition::getTeams));
 
-    private final static Map<Competition, MatchesResolver> matchesResolverByCompetition = ImmutableMap.of(
-        Competition.NBA, new NBAMatchResolver()
-    );
+    private final Map<Competition, MatchesResolver> matchesResolverByCompetition;
+
+    @Autowired
+    public CompetitionService(List<MatchesResolver> resolverList) {
+        matchesResolverByCompetition = ImmutableMap.copyOf(
+            resolverList.stream().collect(Collectors.toMap(MatchesResolver::getType, p -> p))
+        );
+    }
 
     public Set<Competition> getCompetitions() {
         return Sets.newHashSet(Competition.values());
