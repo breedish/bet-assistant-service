@@ -1,5 +1,8 @@
 # bet-assistant-service
 =====================
+## Prerequisites
+- JDK 8
+- Maven 3
 
 ## REST Resource overview
 
