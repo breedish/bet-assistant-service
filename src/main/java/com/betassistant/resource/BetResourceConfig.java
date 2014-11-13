@@ -12,8 +12,8 @@ import javax.ws.rs.ext.MessageBodyWriter;
 public class BetResourceConfig extends ResourceConfig {
 
     public BetResourceConfig() {
+        register(CompetitionResource.class);
         register(JacksonJaxbJsonProvider.class, MessageBodyReader.class, MessageBodyWriter.class);
-//        register(JsonProcessingExceptionMapper.class);
 
         packages("com.betassistant.resource");
     }
