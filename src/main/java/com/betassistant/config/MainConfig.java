@@ -27,14 +27,14 @@ public class MainConfig {
     }
 
     @Bean
-    public PropertyOverrideConfigurer propertyOverrideConfigurer() {
+    public static PropertyOverrideConfigurer propertyOverrideConfigurer() {
         PropertyOverrideConfigurer configurer = new PropertyOverrideConfigurer();
         configurer.setLocations(new ClassPathResource("bet-assistant.properties"));
         return configurer;
     }
 
     @Bean
-    PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer(ApplicationContext context) {
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer(ApplicationContext context) {
         PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
         configurer.setLocation(new ClassPathResource("bet-assistant.properties"));
         configurer.setIgnoreResourceNotFound(true);

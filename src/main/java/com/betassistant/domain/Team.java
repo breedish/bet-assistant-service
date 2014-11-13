@@ -15,21 +15,14 @@ public class Team {
 
     private final String niceName;
 
-    private final Competition competition;
-
     public Team(Long id, String name) {
-        this(id, name, null);
+        this(id, name, name.toLowerCase());
     }
 
-    public Team(Long id, String name, Competition competition) {
-        this(id, name, name.toLowerCase(), competition);
-    }
-
-    public Team(Long id, String name, String niceName, Competition competition) {
+    public Team(Long id, String name, String niceName) {
         this.id = id;
         this.name = name;
         this.niceName = niceName;
-        this.competition = competition;
     }
 
     public Long getId() {
@@ -44,10 +37,6 @@ public class Team {
         return niceName;
     }
 
-    public Competition getCompetition() {
-        return competition;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -60,17 +49,17 @@ public class Team {
         Team that = (Team) o;
 
         return Objects.equals(id, that.id) && Objects.equals(name, that.name)
-            && Objects.equals(niceName, that.niceName) && Objects.equals(competition, competition);
+            && Objects.equals(niceName, that.niceName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, niceName, competition);
+        return Objects.hash(id, name, niceName);
     }
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this).add("id", id).add("name", name)
-            .add("niceName", niceName).add("competition", competition).toString();
+            .add("niceName", niceName).toString();
     }
 }

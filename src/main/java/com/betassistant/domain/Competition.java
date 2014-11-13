@@ -81,4 +81,13 @@ public enum Competition {
     public Set<Team> getTeams() {
         return teams;
     }
+
+    public static Competition fromString(String niceName) {
+        try {
+            return Enum.valueOf(Competition.class, niceName.toUpperCase());
+        } catch (Exception e) {
+            throw new IllegalArgumentException(String.format("No %s competition is registered", niceName));
+        }
+    }
+
 }

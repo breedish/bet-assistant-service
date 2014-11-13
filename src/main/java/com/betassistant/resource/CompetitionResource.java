@@ -19,7 +19,7 @@ import java.util.Collection;
  * @author zenind
  */
 @Component
-@Path("competitions/v1")
+@Path("/competitions/v1")
 @Produces(MediaType.APPLICATION_JSON)
 public class CompetitionResource {
 
