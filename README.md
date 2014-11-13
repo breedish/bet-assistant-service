@@ -38,7 +38,7 @@ Sample request:
  GET http://localhost:8080/bet/competitions/v1/nba/matches/summary/ 
  ```
 Sample response:
- ```json
+```json
  {
      "totalMatches": 113,
      "totalGoals": 22477,
@@ -97,6 +97,14 @@ Sample response:
 
 ## Notes
 - By default application is deployed under */bet/* context path
+
+## How to run locally
+
+```bash
+git clone git@github.com:breedish/bet-assistant-service.git
+cd bet-assistant-service
+mvn clean install jetty:run
+```
 
 ### TODO
 - [ ] Deploy to OpenShift
