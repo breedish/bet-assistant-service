@@ -1,5 +1,4 @@
 # bet-assistant-service
-=====================
 ## Prerequisites
 - JDK 8
 - Maven 3
