@@ -4,6 +4,7 @@ import com.betassistant.domain.Competition;
 import com.betassistant.domain.MatchResult;
 import com.betassistant.domain.Team;
 import com.betassistant.resource.response.MatchesSummaryResponse;
+import com.betassistant.service.resolver.MatchesResolver;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.collect.ImmutableMap;

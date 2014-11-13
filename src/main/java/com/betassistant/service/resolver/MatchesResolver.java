@@ -1,4 +1,4 @@
-package com.betassistant.service;
+package com.betassistant.service.resolver;
 
 import com.betassistant.domain.Competition;
 import com.betassistant.domain.MatchResult;
