@@ -11,7 +11,7 @@ import java.util.Set;
 public enum Competition {
 
     NBA(
-        1L,
+        3463L,
         "nba",
         "NBA",
         ImmutableSet.<Team>builder()
