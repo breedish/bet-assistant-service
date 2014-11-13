@@ -13,24 +13,24 @@ import java.util.Map;
  * {
  * "homeScore": 82,
  * "awayScore": 82,
- * "isHome": false
+ * "getHome": false
  * },
  * {
  * "homeScore": 95,
  * "awayScore": 104,
- * "isHome": true
+ * "getHome": true
  * }
  * ],
  * "590": [
  * {
  * "homeScore": 88,
  * "awayScore": 82,
- * "isHome": true
+ * "getHome": true
  * },
  * {
  * "homeScore": 95,
  * "awayScore": 104,
- * "isHome": true
+ * "getHome": true
  * }
  * ],
  * "totalMatches": 234,
@@ -40,29 +40,29 @@ import java.util.Map;
  *
  * @author zenind
  */
-public class MatchesSummaryResult {
+public class MatchesSummaryResponse {
 
-    private final Integer totalMatches;
+    private final Long totalMatches;
 
-    private final Integer totalGoals;
+    private final Long totalGoals;
 
-    private final Map<Integer, List<MatchResult>> results;
+    private final Map<Long, List<MatchResult>> results;
 
-    public MatchesSummaryResult(Integer totalMatches, Integer totalGoals, Map<Integer, List<MatchResult>> results) {
+    public MatchesSummaryResponse(Long totalMatches, Long totalGoals, Map<Long, List<MatchResult>> results) {
         this.totalMatches = totalMatches;
         this.totalGoals = totalGoals;
         this.results = results;
     }
 
-    public Integer getTotalMatches() {
+    public Long getTotalMatches() {
         return totalMatches;
     }
 
-    public Integer getTotalGoals() {
+    public Long getTotalGoals() {
         return totalGoals;
     }
 
-    public Map<Integer, List<MatchResult>> getResults() {
+    public Map<Long, List<MatchResult>> getResults() {
         return results;
     }
 }

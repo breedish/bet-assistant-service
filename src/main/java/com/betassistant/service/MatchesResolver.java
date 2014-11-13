@@ -1,14 +1,17 @@
 package com.betassistant.service;
 
 import com.betassistant.domain.Competition;
-import com.betassistant.resource.response.MatchesSummaryResult;
+import com.betassistant.domain.MatchResult;
+import com.betassistant.domain.Team;
+
+import java.util.List;
 
 /**
  * @author zenind
  */
 public interface MatchesResolver {
 
-    MatchesSummaryResult resolve(Competition competition);
+    List<MatchResult> resolve(Team team);
 
     Competition getType();
 

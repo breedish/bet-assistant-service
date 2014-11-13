@@ -1,26 +1,26 @@
 package com.betassistant.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
-import com.google.common.base.Preconditions;
 
 /**
  * @author zenind
  */
 public class MatchResult {
 
-    public final boolean isHome;
+    @JsonProperty("isHome")
+    public final boolean home;
     public final int scoreHome;
     public final int scoreAway;
 
-    public MatchResult(boolean isHome, int scoreHome, int scoreAway) {
-        Preconditions.checkNotNull(scoreAway, scoreHome);
-        this.isHome = isHome;
+    public MatchResult(boolean home, int scoreHome, int scoreAway) {
+        this.home = home;
         this.scoreHome = scoreHome;
         this.scoreAway = scoreAway;
     }
 
-    public boolean isHome() {
-        return isHome;
+    public boolean getHome() {
+        return home;
     }
 
     public int getScoreHome() {
@@ -33,7 +33,7 @@ public class MatchResult {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this).add("isHome", isHome)
+        return MoreObjects.toStringHelper(this).add("getHome", home)
             .add("homeScore", scoreHome).add("awayScore", scoreAway).toString();
     }
 

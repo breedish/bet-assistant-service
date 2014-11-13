@@ -2,7 +2,7 @@ package com.betassistant.resource;
 
 import com.betassistant.domain.Competition;
 import com.betassistant.domain.Team;
-import com.betassistant.resource.response.MatchesSummaryResult;
+import com.betassistant.resource.response.MatchesSummaryResponse;
 import com.betassistant.service.CompetitionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -36,15 +36,15 @@ public class CompetitionResource {
     }
 
     @GET
-    @Path("/teams/{competition}")
+    @Path("/{competition}/teams")
     public Collection<Team> getTeams(@PathParam("competition") @NotNull Competition competition) {
         return competitionService.getTeams(competition);
     }
 
     @GET
-    @Path("/matches/summary/{competition}")
-    public MatchesSummaryResult getSummary(@PathParam("competition") @NotNull Competition competition) {
-        return competitionService.getMatchesResults(competition);
+    @Path("/{competition}/matches/summary")
+    public MatchesSummaryResponse getSummary(@PathParam("competition") @NotNull Competition competition) {
+        return competitionService.getMatchesSummary(competition);
     }
 
 }
