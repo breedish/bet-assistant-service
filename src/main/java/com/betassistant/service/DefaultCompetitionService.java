@@ -4,7 +4,7 @@ import com.betassistant.domain.Competition;
 import com.betassistant.domain.MatchResult;
 import com.betassistant.domain.Team;
 import com.betassistant.resource.response.MatchesSummaryResponse;
-import com.betassistant.service.resolver.MatchesResolver;
+import com.betassistant.service.resolver.MatchResultsResolver;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import org.javatuples.Pair;
@@ -34,11 +34,11 @@ public class DefaultCompetitionService implements CompetitionService {
 
     private final ExecutorService executionPool = Executors.newCachedThreadPool();
 
-    private final Map<Competition, MatchesResolver> matchesResolverByCompetition;
+    private final Map<Competition, MatchResultsResolver> matchesResolverByCompetition;
 
-    public DefaultCompetitionService(List<MatchesResolver> resolverList) {
+    public DefaultCompetitionService(List<MatchResultsResolver> resolverList) {
         this.matchesResolverByCompetition = ImmutableMap.copyOf(
-            resolverList.stream().collect(Collectors.toMap(MatchesResolver::getType, p -> p))
+            resolverList.stream().collect(Collectors.toMap(MatchResultsResolver::getType, p -> p))
         );
     }
 
@@ -74,7 +74,7 @@ public class DefaultCompetitionService implements CompetitionService {
             return Collections.emptyMap();
         }
 
-        final MatchesResolver resolver = findResolver(competition);
+        final MatchResultsResolver resolver = findResolver(competition);
         final CountDownLatch latch = new CountDownLatch(teams.size());
         final Map<Team, List<MatchResult>> results = new ConcurrentHashMap<>();
         teams.parallelStream().forEach(t -> executionPool.submit(() -> {
@@ -97,7 +97,7 @@ public class DefaultCompetitionService implements CompetitionService {
         return results;
     }
 
-    protected MatchesResolver findResolver(Competition competition) {
+    protected MatchResultsResolver findResolver(Competition competition) {
         if (!matchesResolverByCompetition.containsKey(competition)) {
             throw new IllegalStateException(
                 String.format("Matches results service for %s competition is not available", competition.getName())

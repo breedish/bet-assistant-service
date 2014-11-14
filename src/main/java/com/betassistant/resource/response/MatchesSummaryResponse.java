@@ -6,38 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Response format:
- * {code}
- * {
- * "201": [
- * {
- * "homeScore": 82,
- * "awayScore": 82,
- * "getHome": false
- * },
- * {
- * "homeScore": 95,
- * "awayScore": 104,
- * "getHome": true
- * }
- * ],
- * "590": [
- * {
- * "homeScore": 88,
- * "awayScore": 82,
- * "getHome": true
- * },
- * {
- * "homeScore": 95,
- * "awayScore": 104,
- * "getHome": true
- * }
- * ],
- * "totalMatches": 234,
- * "totalGoals": 3566
- * }
- * {code}
- *
  * @author zenind
  */
 public class MatchesSummaryResponse {

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author zenind
  */
-public interface MatchesResolver {
+public interface MatchResultsResolver {
 
     List<MatchResult> resolve(Team team);
 

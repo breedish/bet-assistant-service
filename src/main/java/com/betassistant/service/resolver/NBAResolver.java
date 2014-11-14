@@ -17,15 +17,15 @@ import java.util.List;
 /**
  * @author zenind
  */
-public class NBAMatchResolver implements MatchesResolver {
+public class NBAResolver implements MatchResultsResolver {
 
-    private static final Logger LOG = LoggerFactory.getLogger(NBAMatchResolver.class);
+    private static final Logger LOG = LoggerFactory.getLogger(NBAResolver.class);
 
     private static final String URL_PATTERN = "https://www.marathonbet.com/su/sportstatext.htm?nr5=8398&gmt=%s,%s";
 
     private final Competition competition;
 
-    public NBAMatchResolver(Competition competition) {
+    public NBAResolver(Competition competition) {
         this.competition = competition;
     }
 
