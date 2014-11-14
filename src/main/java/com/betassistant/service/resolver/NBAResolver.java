@@ -54,7 +54,7 @@ public class NBAResolver implements MatchResultsResolver {
                         statItems.add(statItem);
                     }
                 }
-                if (item.startsWith("—")) {
+                if (item.startsWith("-")) {
                     isData = true;
                 }
             }
