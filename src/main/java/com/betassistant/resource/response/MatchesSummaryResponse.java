@@ -42,23 +42,23 @@ import java.util.Map;
  */
 public class MatchesSummaryResponse {
 
-    private final Long totalMatches;
+    private final Integer totalMatches;
 
-    private final Long totalGoals;
+    private final Integer totalGoals;
 
     private final Map<Long, List<MatchResult>> results;
 
-    public MatchesSummaryResponse(Long totalMatches, Long totalGoals, Map<Long, List<MatchResult>> results) {
+    public MatchesSummaryResponse(Integer totalMatches, Integer totalGoals, Map<Long, List<MatchResult>> results) {
         this.totalMatches = totalMatches;
         this.totalGoals = totalGoals;
         this.results = results;
     }
 
-    public Long getTotalMatches() {
+    public Integer getTotalMatches() {
         return totalMatches;
     }
 
-    public Long getTotalGoals() {
+    public Integer getTotalGoals() {
         return totalGoals;
     }
 
