@@ -89,7 +89,7 @@ public class NBAResolver implements MatchResultsResolver {
                 }
             }
         } catch (Throwable e) {
-            LOG.error("Error while parse stat '{}' for {} team : {}", stat, team.getId(), e);
+            LOG.error("Error while parse stats '{}' for {} team : {}", stat, team.getId(), e);
         }
         return null;
     }
