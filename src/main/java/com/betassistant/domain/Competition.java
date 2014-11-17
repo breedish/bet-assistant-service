@@ -26,7 +26,7 @@ public enum Competition {
         .add(new Team(355L, "INDIANA"))
         .add(new Team(586L, "MILWAUKEE"))
         .add(new Team(584L, "ATLANTA"))
-        .add(new Team(587L, "CHARLOTTE"))
+        .add(new Team(115769L, "CHARLOTTE"))
         .add(new Team(358L, "MIAMI"))
         .add(new Team(196L, "ORLANDO"))
         .add(new Team(591L, "WASHINGTON"))
