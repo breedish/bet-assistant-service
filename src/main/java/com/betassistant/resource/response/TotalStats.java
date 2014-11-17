@@ -12,37 +12,37 @@ public final class TotalStats implements Consumer<List<MatchResult>> {
 
     private int total;
 
-    private int totalHome;
+    private int totalHomeScore;
 
-    private int totalAway;
+    private int totalAwayScore;
 
     @Override
     public void accept(List<MatchResult> value) {
         total += value.size();
-        totalHome += value.stream().mapToInt(MatchResult::getScoreHome).sum();
-        totalAway += value.stream().mapToInt(MatchResult::getScoreAway).sum();
+        totalHomeScore += value.stream().mapToInt(MatchResult::getScoreHome).sum();
+        totalAwayScore += value.stream().mapToInt(MatchResult::getScoreAway).sum();
     }
 
     public void combine(TotalStats other) {
         total += other.total;
-        totalHome += other.totalHome;
-        totalAway += other.totalAway;
+        totalHomeScore += other.totalHomeScore;
+        totalAwayScore += other.totalAwayScore;
     }
 
     public int getTotal() {
-        return medium(total);
+        return total;
     }
 
     public int getTotalScore() {
-        return getTotalHome() + getTotalAway();
+        return getTotalHomeScore() + getTotalAwayScore();
     }
 
-    public int getTotalHome() {
-        return medium(totalHome);
+    public int getTotalHomeScore() {
+        return medium(totalHomeScore);
     }
 
-    public int getTotalAway() {
-        return medium(totalAway);
+    public int getTotalAwayScore() {
+        return medium(totalAwayScore);
     }
 
     private Integer medium(int value) {
