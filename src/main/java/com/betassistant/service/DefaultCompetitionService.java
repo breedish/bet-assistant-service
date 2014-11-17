@@ -4,10 +4,10 @@ import com.betassistant.domain.Competition;
 import com.betassistant.domain.MatchResult;
 import com.betassistant.domain.Team;
 import com.betassistant.resource.response.MatchesSummaryResponse;
+import com.betassistant.resource.response.TotalStats;
 import com.betassistant.service.resolver.MatchResultsResolver;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
-import org.javatuples.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +22,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 /**
@@ -55,18 +54,16 @@ public class DefaultCompetitionService implements CompetitionService {
 
         byTeamResults.putAll(resolveMatches(getTeams(competition), competition));
 
-        Pair<Integer, Integer> aggregateInfo = calculatesStats(byTeamResults);
+        TotalStats aggregateInfo = calculateTotalStats(byTeamResults);
         return new MatchesSummaryResponse(
-            aggregateInfo.getValue0(),
-            aggregateInfo.getValue1(),
+            aggregateInfo,
             byTeamResults.entrySet().stream().collect(Collectors.toMap(e -> e.getKey().getId(), Map.Entry::getValue))
         );
     }
 
-    protected Pair<Integer, Integer> calculatesStats(Map<Team, List<MatchResult>> results) {
+    protected TotalStats calculateTotalStats(Map<Team, List<MatchResult>> results) {
         return results.values().stream()
-            .collect(TotalStatsConsumer::new, TotalStatsConsumer::accept, TotalStatsConsumer::combine)
-            .getStats();
+            .collect(TotalStats::new, TotalStats::accept, TotalStats::combine);
     }
 
     protected Map<Team, List<MatchResult>> resolveMatches(Set<Team> teams, Competition competition) {
@@ -117,30 +114,4 @@ public class DefaultCompetitionService implements CompetitionService {
         }
     }
 
-    static final class TotalStatsConsumer implements Consumer<List<MatchResult>> {
-
-        private int total;
-
-        private int totalScore;
-
-        @Override
-        public void accept(List<MatchResult> value) {
-            total+= value.size();
-            totalScore += value.stream().mapToInt(m -> m.getScoreAway() + m.getScoreHome()).sum();
-        }
-
-        public void combine(TotalStatsConsumer other) {
-            total += other.total;
-            totalScore += other.totalScore;
-        }
-
-        public Pair<Integer, Integer> getStats() {
-            return new Pair<>(medium(total), medium(totalScore));
-        }
-
-        private Integer medium(int value) {
-            Double result = value > 0 ? ((double) value) / 2 : 0;
-            return result.intValue();
-        }
-    }
 }

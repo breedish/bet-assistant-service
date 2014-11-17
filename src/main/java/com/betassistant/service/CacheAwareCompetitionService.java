@@ -19,7 +19,7 @@ public class CacheAwareCompetitionService implements CompetitionService {
 
     private final Cache<Competition, MatchesSummaryResponse> matchesSummaryCache = CacheBuilder.newBuilder()
         .maximumSize(200)
-        .expireAfterAccess(10, TimeUnit.MINUTES)
+        .expireAfterAccess(12, TimeUnit.HOURS)
         .build();
 
     public CacheAwareCompetitionService(CompetitionService delegate) {

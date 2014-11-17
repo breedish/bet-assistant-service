@@ -10,24 +10,17 @@ import java.util.Map;
  */
 public class MatchesSummaryResponse {
 
-    private final Integer totalMatches;
-
-    private final Integer totalGoals;
+    private final TotalStats totalStats;
 
     private final Map<Long, List<MatchResult>> results;
 
-    public MatchesSummaryResponse(Integer totalMatches, Integer totalGoals, Map<Long, List<MatchResult>> results) {
-        this.totalMatches = totalMatches;
-        this.totalGoals = totalGoals;
+    public MatchesSummaryResponse(TotalStats totalStats, Map<Long, List<MatchResult>> results) {
+        this.totalStats = totalStats;
         this.results = results;
     }
 
-    public Integer getTotalMatches() {
-        return totalMatches;
-    }
-
-    public Integer getTotalGoals() {
-        return totalGoals;
+    public TotalStats getTotalStats() {
+        return totalStats;
     }
 
     public Map<Long, List<MatchResult>> getResults() {
