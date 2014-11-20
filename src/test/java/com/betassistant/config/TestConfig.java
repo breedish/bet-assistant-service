@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Import;
  * @author zenind
  */
 @Configuration
-@Import({MainConfig.class})
+@Import({})
 public class TestConfig {
 
 
